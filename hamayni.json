@@ -1,0 +1,43 @@
+{
+  "version": "1.0.0",
+  "name": "WordPress",
+  "description": "WordPress CMS with MySQL database",
+  "prerequisites": [
+    "docker",
+    "docker-compose"
+  ],
+  "healthCheck": {
+    "url": "http://localhost:8080",
+    "timeout": 60
+  },
+  "ports": {
+    "http": 8080
+  },
+  "env": [
+    {
+      "name": "MYSQL_DATABASE",
+      "required": false,
+      "description": "Database name",
+      "default": "wordpress"
+    },
+    {
+      "name": "MYSQL_USER",
+      "required": false,
+      "description": "Database user",
+      "default": "wordpress"
+    },
+    {
+      "name": "MYSQL_PASSWORD",
+      "required": true,
+      "description": "Database password"
+    },
+    {
+      "name": "MYSQL_ROOT_PASSWORD",
+      "required": true,
+      "description": "MySQL root password"
+    }
+  ],
+  "postInstall": "echo 'WordPress is ready at http://localhost:8080'",
+  "minAgentVersion": "2.5.0",
+  "tested": true
+}
